@@ -166,3 +166,64 @@ head, body{
     font-size: 12px;
     font-weight: 100;
 }
+
+
+
+
+#bodywed{
+    background-color: #040449;
+    background-image: url("./images/back.jpg");
+    background-size: cover;
+}
+#mainImg{
+    margin: 20px 0;
+    width: 60%;
+}
+.justifyCenter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#mainImg{
+
+}
+img{
+    width: 100%;
+}
+
+.rgb-shadow {
+    position: relative;
+    background: #111;
+    color: white;
+    padding: 20px 20px;
+    font-size: 24px;
+    border-radius: 16px;
+    z-index: 1;
+    animation: rgbShadow 5s infinite linear;
+    box-shadow: 0 0 20px red;
+}
+
+@keyframes rgbShadow {
+    0% {
+        box-shadow: 0 0 20px red;
+    }
+    25% {
+        box-shadow: 0 0 20px blue;
+    }
+    50% {
+        box-shadow: 0 0 20px lime;
+    }
+    75% {
+        box-shadow: 0 0 20px fuchsia;
+    }
+    100% {
+        box-shadow: 0 0 20px red;
+    }
+}
+
+#connect{
+    position: absolute;
+    right: 30px;
+    top: 10px;
+}
+
