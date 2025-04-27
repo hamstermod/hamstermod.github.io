@@ -10,7 +10,10 @@ head, body{
     overflow: hidden;
 }
 .hide{
-    display: none;
+    display: none !important;
+}
+#videoOrig{
+    color: white;
 }
 #lions{
     background-image: url("./images/lionsBG.png");
@@ -174,6 +177,7 @@ head, body{
     background-color: #040449;
     background-image: url("./images/back.jpg");
     background-size: cover;
+    overflow: auto !important;
 }
 #mainImg{
     margin: 20px 0;
@@ -221,9 +225,39 @@ img{
     }
 }
 
-#connect{
-    position: absolute;
-    right: 30px;
+#connect2{
+    position: fixed;
+    left: 10px;
     top: 10px;
+    z-index: 99;
 }
-
+#videoWednesday{
+    margin-top: 20px;
+    width: 80%;
+    height: 300px;
+}
+#hideVideoImg{
+    position: relative;
+}
+#hideVideoImg p {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+}
+#hideVideoImg img{
+    filter: blur(5px);
+}
+#pay div{
+    width: 60%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #0098EA;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 510;
+    line-height: 18px;
+    text-align: center;
+}

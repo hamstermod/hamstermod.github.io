@@ -51,7 +51,6 @@ dataL.map((el) => {
 })
 listinglist.innerHTML = html;
 if(airdropValue === "glent"){
-    console.log("GLENT")
     const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
         manifestUrl: 'https://chocolate-fantastic-vole-284.mypinata.cloud/ipfs/bafkreieaav4e7brr4enko2syfsfz76bednuukxt6rrpsder7ifzc73epmm',
         buttonRootId: 'connect'
@@ -93,10 +92,48 @@ if(airdropValue === "glent"){
     };
 
 }
-if(airdropValue === "wednesday" || 1) { //test
-    console.log( window.location.href.replace("index.html", "manifest.json"))
+if(airdropValue === "wednesday") { //test
+    let isPaid = !!(+(localStorage.getItem("paid")) || 0);
+    if(isPaid){
+        let hideVideoImg = document.getElementById("hideVideoImg");
+        let payBut = document.getElementById("pay");
+        let videoOrig = document.getElementById("videoOrig");
+        hideVideoImg.classList.add("hide");
+        payBut.classList.add("hide");
+        videoOrig.className = "";
+    }
     const tonConnectUI2 = new TON_CONNECT_UI.TonConnectUI({
-        manifestUrl: window.location.href.replace("index.html", "manifest.json"),
+        manifestUrl: "https://hamstermod.github.io/manifest.json",
         buttonRootId: "connect2"
     });
+    const pay = document.querySelector("#pay > div");
+    pay.onclick = async () => { //hey watcher code hiiii
+        if(!(tonConnectUI2.connected)){
+            tonConnectUI2.openModal();
+            return;
+        }
+        let a = new TonWeb.boc.Cell();
+        a.bits.writeUint(0, 32);
+        a.bits.writeString("BUY WEDNESDAY 2");
+        let payload = TonWeb.utils.bytesToBase64(await a.toBoc());
+        const transaction = {
+            validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
+            messages: [
+                {
+                    address: "UQC0ovO8GpgrmuOkepaBeT-fysyEsBna6wjB1SOjF9CtHOe2",
+                    amount: "3000000000",
+                    payload: payload
+                }
+            ]
+        };
+        try {
+            const result = await tonConnectUI2.sendTransaction(transaction);
+            if (1) {
+                localStorage.setItem("paid", 1);
+                reload()
+            }
+        } catch (e) {
+            console.error(e);
+        }
+    }
 }
